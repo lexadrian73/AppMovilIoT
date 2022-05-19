@@ -17,4 +17,14 @@
     <strong>Ready to create an app?</strong>
     <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
   </div>
+  
+  <ion-item (click)="addDirection()">
+    <ion-label class="normal"> Ubicación </ion-label>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" color="danger" name="Location"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
+
 </ion-content>
