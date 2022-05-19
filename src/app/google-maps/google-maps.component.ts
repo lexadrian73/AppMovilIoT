@@ -70,8 +70,8 @@ export class GoogleMapsComponent implements OnInit {
       draggable: false,
     });
     //marker2
-    //Click Nueva Position
-    this.clickHandleEvent();
+    
+    this.clickHandleEvent();//Click Nueva Position
     this.infoWindow = new google.maps.InfoWindow();
     this.addMarker(position);
     this.setInfoWindow(this.marker, this.label.titulo, this.label.subTitulo);

@@ -13,6 +13,12 @@ export class HomePage {
     ubicacion: ''
   }
 
+  items = [
+    { nombre: 'Juan Perez', edad: '69', bodyT:'28', oxygenS:'97', heartR:'60'},
+    { nombre: 'John Cena', edad: '65', bodyT:'29', oxygenS:'97', heartR:'61'},
+    { nombre: 'Juana Lopez', edad: '72', bodyT:'30', oxygenS:'97', heartR:'62'}
+  ];
+
   constructor(
     private modalController: ModalController
   ) {}
@@ -39,6 +45,10 @@ export class HomePage {
       this.cliente.ubicacion = data.pos;
       console.log('this.cliente -> ', this.cliente);
     }
+  }
+
+  viewItem(item: any): void{
+    console.log(item);
   }
 
 }

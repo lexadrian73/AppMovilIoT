@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Sistema IoT
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -12,11 +12,6 @@
       <ion-title size="large">Blank</ion-title>
     </ion-toolbar>
   </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
   
   <ion-item (click)="addDirection()">
     <ion-label class="normal"> Ubicación </ion-label>
@@ -26,5 +21,47 @@
       </ion-button>
     </ion-buttons>
   </ion-item>
+
+  <ion-list padding *ngFor="let item of items">
+    <ion-item (click)="viewItem(item)">
+      <ion-label>
+        <h2>{{ item.nombre }}</h2>
+        <ion-row>
+          <ion-col>
+            <div>
+              <ion-chip outline color="warning">
+                <ion-icon name="thermometer-outline"></ion-icon>
+                <ion-label>Temperatura Corporal: {{ item.bodyT }}</ion-label>
+              </ion-chip>
+            </div>
+          </ion-col>
+          <ion-col col-6>
+            <div>
+              <ion-chip outline color="primary">
+                <ion-icon name="cloud-outline"></ion-icon>
+                <ion-label>Saturacion Oxigeno: {{ item.oxygenS }}</ion-label>
+              </ion-chip>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <ion-chip outline color="danger">
+                <ion-icon name="heart-outline"></ion-icon>
+                <ion-label>Frecuencia Cardiaca: {{ item.heartR }}</ion-label>
+              </ion-chip>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  
+  
+
+  
+
 
 </ion-content>
