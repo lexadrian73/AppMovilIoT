@@ -14,20 +14,21 @@ export class HomePage {
   }
 
   items = [
-    { nombre: 'Juan Perez', edad: '69', bodyT:'28', oxygenS:'97', heartR:'60'},
-    { nombre: 'John Cena', edad: '65', bodyT:'29', oxygenS:'97', heartR:'61'},
-    { nombre: 'Juana Lopez', edad: '72', bodyT:'30', oxygenS:'97', heartR:'62'}
+    { nombre: 'Juan Perez', edad: '69', bodyT:'28', oxygenS:'97', heartR:'60', lat:-2.898116, lng:-78.99958149999999},
+    { nombre: 'John Cena', edad: '65', bodyT:'29', oxygenS:'97', heartR:'61', lat:-0.222540, lng: -78.511532},
+    { nombre: 'Juana Lopez', edad: '72', bodyT:'30', oxygenS:'97', heartR:'62', lat:-0.294303, lng:78.478480}
   ];
 
   constructor(
     private modalController: ModalController
   ) {}
 
-  async addDirection() {
+  async addDirection(item: any) {
+    console.log(item.lat, item.lng);
     const ubicacion = this.cliente.ubicacion
     let position = {
-      lat: -2.898116,
-      lng: -78.99958149999999
+      lat: item.lat,
+      lng: item.lng
     };
     if (ubicacion !== null) {
       position = ubicacion;

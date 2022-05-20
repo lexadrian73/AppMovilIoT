@@ -12,15 +12,6 @@
       <ion-title size="large">Blank</ion-title>
     </ion-toolbar>
   </ion-header>
-  
-  <ion-item (click)="addDirection()">
-    <ion-label class="normal"> Ubicación </ion-label>
-    <ion-buttons slot="end">
-      <ion-button>
-        <ion-icon slot="icon-only" color="danger" name="Location"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-item>
 
   <ion-list padding *ngFor="let item of items">
     <ion-item (click)="viewItem(item)">
@@ -50,6 +41,14 @@
                 <ion-label>Frecuencia Cardiaca: {{ item.heartR }}</ion-label>
               </ion-chip>
             </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <ion-chip outline color="primary" (click)="addDirection(item)">
+                <ion-icon name="map-outline"></ion-icon>
+                <ion-label>Ubicacion</ion-label>
+              </ion-chip>
+          </div>
           </ion-col>
         </ion-row>
 
