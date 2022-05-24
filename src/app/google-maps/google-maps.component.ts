@@ -18,14 +18,9 @@ export class GoogleMapsComponent implements OnInit {
     lng: -78.9995811499999999
   };
 
-  prueba = {
-    lat: -2.898116,
-    lng: -78.9995811499999999
-  };
-
   label = {
     titulo: 'Ubicacion',
-    subTitulo: 'Mi Ubicacion de envio'
+    subTitulo: 'Ubicacion de la persona'
   };
 
   map: any;
@@ -55,7 +50,7 @@ export class GoogleMapsComponent implements OnInit {
   }
 
   initMap() {
-    const position = this.prueba;
+    const position = this.position;
     let latLng = new google.maps.LatLng(position.lat, position.lng);
     let mapOptions = {
       center: latLng,

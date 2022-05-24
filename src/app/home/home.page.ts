@@ -16,7 +16,7 @@ export class HomePage {
   items = [
     { nombre: 'Juan Perez', edad: '69', bodyT:'28', oxygenS:'97', heartR:'60', lat:-2.898116, lng:-78.99958149999999},
     { nombre: 'John Cena', edad: '65', bodyT:'29', oxygenS:'97', heartR:'61', lat:-0.222540, lng: -78.511532},
-    { nombre: 'Juana Lopez', edad: '72', bodyT:'30', oxygenS:'97', heartR:'62', lat:-0.294303, lng:78.478480}
+    { nombre: 'Juana Lopez', edad: '72', bodyT:'30', oxygenS:'97', heartR:'62', lat:-0.2661637164355669, lng: -78.55332940083667}
   ];
 
   constructor(
@@ -24,21 +24,25 @@ export class HomePage {
   ) {}
 
   async addDirection(item: any) {
-    console.log(item.lat, item.lng);
     const ubicacion = this.cliente.ubicacion
     let position = {
       lat: item.lat,
       lng: item.lng
-    };
-    if (ubicacion !== null) {
-      position = ubicacion;
     }
+  
+    /*if (ubicacion !== null) {
+      position = ubicacion;
+    }*/
+
+    console.log(position)
+
     const modalAdd = await this.modalController.create({
       component: GoogleMapsComponent,
       mode: 'ios',
       swipeToClose: true,
       componentProps: {position}
     });
+
     await modalAdd.present();
     const {data} = await modalAdd.onWillDismiss();
     if (data) {
