@@ -119,4 +119,8 @@ export class GoogleMapsComponent implements OnInit {
     this.modalController.dismiss({ pos: this.positionSet })
   }
 
+  closeModal(): void {
+    this.modalController.dismiss();
+  }
+
 }
