@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { GoogleMapsComponent } from 'src/app/google-maps/google-maps.component';
-
+import { LocalNotifications } from '@awesome-cordova-plugins/local-notifications/ngx';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +20,8 @@ export class HomePage {
   ];
 
   constructor(
-    private modalController: ModalController
+    private modalController: ModalController,
+    private localNotifications: LocalNotifications
   ) {}
 
   async addDirection(item: any) {
@@ -54,6 +55,15 @@ export class HomePage {
 
   viewItem(item: any): void{
     console.log(item);
+  }
+
+  notification(){
+    this.localNotifications.schedule({
+      id: 1,
+      text: 'Single ILocalNotification',
+      trigger: {at: new Date(new Date().getTime() + 3600)},
+      //sound: isAndroid? 'file://sound.mp3': 'file://beep.caf',
+    }); 
   }
 
 }
