@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "111803478641",
+    "project_id": "aplicacionmoviliot",
+    "storage_bucket": "aplicacionmoviliot.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:111803478641:android:b49e2a2ac662d5c9d4e1d0",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "111803478641-qi5n8lf5d2k81seuctmdr2sm70vlkvbi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuQv4ZgB6JXCWXhQO7KzBL1v7jDKNA36U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "111803478641-qi5n8lf5d2k81seuctmdr2sm70vlkvbi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

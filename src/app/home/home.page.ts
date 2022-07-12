@@ -1,16 +1,59 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { GoogleMapsComponent } from 'src/app/google-maps/google-maps.component';
-import { LocalNotifications } from '@awesome-cordova-plugins/local-notifications/ngx';
+import {
+  ActionPerformed,
+  PushNotificationSchema,
+  PushNotifications,
+  Token,
+} from '@capacitor/push-notifications';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit{
   cliente: any = {
     ubicacion: ''
+  }
+  
+  ngOnInit() {
+    console.log('Initializing HomePage');
+
+    // Request permission to use push notifications
+    // iOS will prompt user and return if they granted permission or not
+    // Android will just grant without prompting
+    PushNotifications.requestPermissions().then(result => {
+      if (result.receive === 'granted') {
+        // Register with Apple / Google to receive push via APNS/FCM
+        PushNotifications.register();
+      } else {
+        // Show some error
+      }
+    });
+
+    PushNotifications.addListener('registration', (token: Token) => {
+      alert('Push registration success, token: ' + token.value);
+    });
+
+    PushNotifications.addListener('registrationError', (error: any) => {
+      alert('Error on registration: ' + JSON.stringify(error));
+    });
+
+    PushNotifications.addListener(
+      'pushNotificationReceived',
+      (notification: PushNotificationSchema) => {
+        alert('Push received: ' + JSON.stringify(notification));
+      },
+    );
+
+    PushNotifications.addListener(
+      'pushNotificationActionPerformed',
+      (notification: ActionPerformed) => {
+        alert('Push action performed: ' + JSON.stringify(notification));
+      },
+    );
   }
 
   items = [
@@ -21,7 +64,6 @@ export class HomePage {
 
   constructor(
     private modalController: ModalController,
-    private localNotifications: LocalNotifications
   ) {}
 
   async addDirection(item: any) {
@@ -55,15 +97,6 @@ export class HomePage {
 
   viewItem(item: any): void{
     console.log(item);
-  }
-
-  notification(){
-    this.localNotifications.schedule({
-      id: 1,
-      text: 'Single ILocalNotification',
-      trigger: {at: new Date(new Date().getTime() + 3600)},
-      //sound: isAndroid? 'file://sound.mp3': 'file://beep.caf',
-    }); 
   }
 
 }

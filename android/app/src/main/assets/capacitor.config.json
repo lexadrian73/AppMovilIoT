@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "appMovilIoT",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
